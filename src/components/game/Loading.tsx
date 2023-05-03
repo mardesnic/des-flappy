@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '../layout/Container';
+import { Wrapper } from '../layout/Wrapper';
 import { Skeleton, Box } from '@mui/material';
 import { styled } from '@mui/system';
 import { GAME_HEIGHT, GAME_WIDTH } from '../../const';
@@ -16,10 +16,10 @@ const LoadingWrapper = styled(Box)(({ theme }) => ({
 
 export const Loading: React.FC = () => {
   return (
-    <Container>
+    <Wrapper>
       <LoadingWrapper>
         <LoadingSkeleton variant='rounded' height={GAME_HEIGHT} />
       </LoadingWrapper>
-    </Container>
+    </Wrapper>
   );
 };

@@ -10,13 +10,14 @@ interface Props {
 const Content = styled(Box)(({ theme }) => ({
   paddingTop: theme.spacing(2),
   paddingBottom: theme.spacing(4),
+  minHeight: '100vh',
   [theme.breakpoints.down('sm')]: {
     paddingBlock: theme.spacing(2),
     paddingInline: theme.spacing(0),
   },
 }));
 
-export const Container: React.FC<Props> = ({ children }) => {
+export const Wrapper: React.FC<Props> = ({ children }) => {
   return (
     <>
       <Navbar />

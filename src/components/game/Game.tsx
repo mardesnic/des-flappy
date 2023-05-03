@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Container } from '../layout/Container';
+import { Wrapper } from '../layout/Wrapper';
 import { Bird } from './Bird';
 import { GameContainer } from './GameContainer';
 import { Box } from '@mui/material';
@@ -7,6 +7,7 @@ import { Obstacle } from './Obstacle';
 import { Controls } from './Controls';
 import { Score } from './Score';
 import { useWindowSize } from 'react-use';
+import { styled } from '@mui/system';
 import {
   BIRD_HEIGHT,
   BIRD_WIDTH,
@@ -31,7 +32,11 @@ import {
   loadFromLocalStorage,
   saveToLocalStorage,
 } from '../../utils/functions';
-import { Loading } from '../layout/Loading';
+import { Loading } from './Loading';
+
+const JumpWrapper = styled(Box)(() => ({
+  userSelect: 'none',
+}));
 
 export const Game: React.FC = () => {
   const { width: windowWidth, height: windowHeight } = useWindowSize();
@@ -226,12 +231,12 @@ export const Game: React.FC = () => {
   }
 
   return (
-    <>
+    <JumpWrapper onClick={jump}>
       {hasNewHighScore && (
         <Confetti width={windowWidth} height={windowHeight} gravity={0.05} />
       )}
-      <Container>
-        <Box onClick={jump}>
+      <Wrapper>
+        <Box>
           <Score
             score={score}
             highScore={highScore}
@@ -255,7 +260,7 @@ export const Game: React.FC = () => {
             volume={volume}
           />
         </Box>
-      </Container>
-    </>
+      </Wrapper>
+    </JumpWrapper>
   );
 };
